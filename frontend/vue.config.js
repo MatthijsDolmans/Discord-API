@@ -7,8 +7,8 @@ module.exports = {
       .plugin('copy')
       .tap((args) => {
         args[0].push({
-          from: path.resolve(__dirname, 'public/_redirects'), // Adjust the path as necessary
-          to: path.resolve(__dirname, 'dist'), // Adjust the output directory as necessary
+          from: path.resolve(__dirname, 'public/_redirects'), 
+          to: path.resolve(__dirname, 'dist'), 
           toType: 'file',
           ignore: ['.*'],
         });
