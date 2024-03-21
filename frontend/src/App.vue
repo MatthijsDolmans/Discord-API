@@ -25,7 +25,7 @@ export default {
         const minutes = now.getMinutes();
 
         if (hours === 9 && minutes === 0) {
-          this.sendMessage('Good morning, Captain Hook!');
+          this.sendMessage('goede morgen, vandaag ga ik Captain Hook je weer laten weten wanneer er activiteiten zijn!');
         } else if (hours === 12 && minutes === 30) {
           this.sendMessage('Captain Hook gaat even wat eten!');
         } else if (hours === 14 && minutes === 30) {
