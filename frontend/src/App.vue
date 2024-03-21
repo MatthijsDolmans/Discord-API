@@ -35,6 +35,9 @@ export default {
         } else if (hours === 15 && minutes === 30) {
           this.sendMessage('Captain Hook ziet dat het nog maar anderhalf uur is!');
         }
+        else if (hours === 15 && minutes === 52) {
+          this.sendMessage('Captain Hook ziet dat het nog maar anderhalf uur is!');
+        }
         else if (hours === 16 && minutes === 0) {
           this.sendMessage('Captain ziet dat het nog maar een uurtje is');
         } 
