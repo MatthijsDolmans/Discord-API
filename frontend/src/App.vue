@@ -60,32 +60,4 @@ export default {
         console.error('Error:', error);
       });
     },
-    async sendRandomFact() {
-  const prompt = "Give me a random fact.";
-  const apiKey = "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"; 
-
-  const response = await fetch('https://api.openai.com/v1/engines/davinci/completions', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${apiKey}`
-    },
-    body: JSON.stringify({
-      prompt: prompt,
-      max_tokens: 50
-    })
-  });
-
-  if (!response.ok) {
-    console.error('Failed to fetch from OpenAI:', response.statusText);
-    return;
-  }
-
-  const data = await response.json();
-  const fact = data.choices[0].text.trim();
-
-  this.sendMessage(`Random Fact: ${fact}`);
-}
-  }
-};
 </script>
