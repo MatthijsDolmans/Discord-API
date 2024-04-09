@@ -24,30 +24,20 @@ export default {
         const hours = now.getHours();
         const minutes = now.getMinutes();
 
-        if (hours === 9 && minutes === 0) {
+        if (hours === 14 && minutes === 18) {
+          this.sendRandomFact();
+        } else if (hours === 13 && minutes === 59) {
           this.sendMessage('goede morgen, vandaag ga ik Captain Hook je weer laten weten wanneer er activiteiten zijn!');
         } else if (hours === 12 && minutes === 30) {
           this.sendMessage('Captain Hook gaat even wat eten!');
-        } else if (hours === 14 && minutes === 30) {
-          this.sendMessage('Captain Hook is aandelen aan het handelen!');
-        } else if (hours === 15 && minutes === 15) {
-          this.sendMessage('Captain Hook verkoopt alle aandelen 15:30 dipje is voorbij!!');
         } else if (hours === 15 && minutes === 30) {
-          this.sendMessage('Captain Hook ziet dat het nog maar anderhalf uur is!');
-        }
-        else if (hours === 15 && minutes === 52) {
-          this.sendMessage('Captain Hook ziet dat het nog maar anderhalf uur is!');
-        }
-        else if (hours === 16 && minutes === 0) {
+          this.sendMessage('Captain Hook ziet tesla moonen! MARKT IS OPEN!!!!!');
+        } else if (hours === 16 && minutes === 0) {
           this.sendMessage('Captain ziet dat het nog maar een uurtje is');
-        } 
-        else if (hours === 16 && minutes === 55) {
+        } else if (hours === 16 && minutes === 55) {
           this.sendMessage('Nog 5 minuten!!!');
         } else if (hours === 17 && minutes === 0) {
           this.sendMessage('Captain Hook gaat weer slapen!');
-          
-        } else {
-          // Do nothing
         }
       }, 60000); // Check every minute
     },
@@ -69,11 +59,33 @@ export default {
       .catch(error => {
         console.error('Error:', error);
       });
-    }
+    },
+    async sendRandomFact() {
+  const prompt = "Give me a random fact.";
+  const apiKey = "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"; 
+
+  const response = await fetch('https://api.openai.com/v1/engines/davinci/completions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${apiKey}`
+    },
+    body: JSON.stringify({
+      prompt: prompt,
+      max_tokens: 50
+    })
+  });
+
+  if (!response.ok) {
+    console.error('Failed to fetch from OpenAI:', response.statusText);
+    return;
+  }
+
+  const data = await response.json();
+  const fact = data.choices[0].text.trim();
+
+  this.sendMessage(`Random Fact: ${fact}`);
+}
   }
 };
 </script>
-
-<style>
-/* Your CSS styles here */
-</style>
