@@ -32,8 +32,6 @@
                         this.sendMessage('Captain Hook is nu al moe!');
                     } else if (hours === 13 && minutes === 50) {
                         this.sendMessage('Captain Hook ziet dat het nog niet eens 2 uur is!');
-                    } else if (hours === 14 && minutes === 0) {
-                        this.sendMessage('Captain Hook heeft 10 minuten geslapen');
                     } else if (hours === 14 && minutes === 30) {
                         this.sendMessage('Captain Hook het is pas half 3 pffffffff!');
                     } else if (hours === 15 && minutes === 0) {
@@ -47,7 +45,7 @@
                     } else if (hours === 17 && minutes === 0) {
                         this.sendMessage('Captain Hook gaat weer slapen!');
                     }
-                }, 60000); // Check every minute
+                }, 1000); // Check every minute
             },
 
             sendMessage(message) {
