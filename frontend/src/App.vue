@@ -25,11 +25,20 @@ export default {
         const minutes = now.getMinutes();
 
         if (hours === 14 && minutes === 18) {
-          this.sendRandomFact();
         } else if (hours === 13 && minutes === 59) {
           this.sendMessage('goede morgen, vandaag ga ik Captain Hook je weer laten weten wanneer er activiteiten zijn!');
         } else if (hours === 12 && minutes === 30) {
-          this.sendMessage('Captain Hook gaat even wat eten!');
+            this.sendMessage('Captain Hook gaat even wat eten!');
+        } else if (hours === 13 && minutes === 40) {
+            this.sendMessage('Captain Hook is nu al moe!');
+        } else if (hours === 13 && minutes === 50) {
+            this.sendMessage('Captain Hook ziet dat het nog niet eens 2 uur is!');
+        } else if (hours === 14 && minutes === 00) {
+            this.sendMessage('Captain Hook heeft 10minuten geslapen');
+        } else if (hours === 14 && minutes === 30) {
+            this.sendMessage('Captain Hook het is pas half 3 pffffffff!');
+        } else if (hours === 15 && minutes === 00) {
+            this.sendMessage('Captain Hook nog halfuur tot marktje!');
         } else if (hours === 15 && minutes === 30) {
           this.sendMessage('Captain Hook ziet tesla moonen! MARKT IS OPEN!!!!!');
         } else if (hours === 16 && minutes === 0) {
