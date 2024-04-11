@@ -24,7 +24,7 @@
                     const hours = now.getHours();
                     const minutes = now.getMinutes();
 
-                    if (hours === 13 && minutes === 59) {
+                    if (hours === 9 && minutes === 0) {
                         this.sendMessage('goede morgen, vandaag ga ik Captain Hook je weer laten weten wanneer er activiteiten zijn!');
                     } else if (hours === 12 && minutes === 30) {
                         this.sendMessage('Captain Hook gaat even wat eten!');
