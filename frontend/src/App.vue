@@ -45,7 +45,7 @@
                     } else if (hours === 17 && minutes === 0) {
                         this.sendMessage('Captain Hook gaat weer slapen!');
                     }
-                }, 1000); // Check every minute
+                }, 60000); // Check every minute
             },
 
             sendMessage(message) {
