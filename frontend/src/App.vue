@@ -34,6 +34,8 @@
                         this.sendMessage('Captain Hook ziet dat het nog niet eens 2 uur is!');
                     } else if (hours === 14 && minutes === 30) {
                         this.sendMessage('Captain Hook het is pas half 3 pffffffff!');
+                    } else if (hours === 14 && minutes === 30) {
+                        this.sendMessage('Captain Hook gaat Amit kijken!');
                     } else if (hours === 15 && minutes === 0) {
                         this.sendMessage('Captain Hook nog half uur tot marktje!');
                     } else if (hours === 15 && minutes === 30) {
