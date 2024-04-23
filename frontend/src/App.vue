@@ -16,7 +16,7 @@
                 players: [],
                 gameInProgress: false,
                 client: new Client(),
-                token: 'MTIzMjMyMTE0NzE2OTgwMDI0Mg.GylMYt._WOs9yH3S38ADVOvSllXJLHDdm4pXQIijlnOPw'
+                token: process.env.BOT_TOKEN 
             };
         },
         mounted() {
@@ -24,15 +24,24 @@
             this.client.login(this.token);
 
             this.scheduleMessages();
+            this.setupEventListeners();
         },
         methods: {
+            setupEventListeners() {
+                this.client.on('message', message => {
+                    if (message.content.startsWith('!rps')) {
+                        this.startGame();
+                    }
+                });
+            },
+
             scheduleMessages() {
                 setInterval(() => {
                     const now = new Date();
                     const hours = now.getHours();
                     const minutes = now.getMinutes();
 
-                    if (hours === 15 && minutes === 25 && !this.gameInProgress) {
+                    if (hours === 15 && minutes === 47 && !this.gameInProgress) {
                         this.startGame();
                     }
                 }, 60000); // Check every minute
@@ -40,7 +49,7 @@
 
             startGame() {
                 this.gameInProgress = true;
-                const message = 'A rock-paper-scissors game is starting at 15:25! Type !rps [rock/paper/scissors] to join.';
+                const message = 'A rock-paper-scissors game is starting at 15:47! Type !rps [rock/paper/scissors] to join.';
                 this.sendMessage(message);
             },
 
