@@ -19,7 +19,7 @@
                     const hours = now.getHours();
                     const minutes = now.getMinutes();
 
-                    if (hours === 15 && minutes === 9 && !this.gameInProgress) {
+                    if (hours === 15 && minutes === 13 && !this.gameInProgress) {
                         this.startGame();
                     }
                 }, 60000); // Check every minute
@@ -71,7 +71,7 @@
             },
 
             sendMessage(message) {
-                const webhookUrl = 'YOUR_DISCORD_WEBHOOK_URL';
+                const webhookUrl = 'https://discord.com/api/webhooks/1219667269186093188/kujZpvgBngWuEVo6-exEriPM9N_XIw8cSC9QbahAx6Iy1LEdfwx3FJpwRvHZfCmJZkG3';
 
                 fetch(webhookUrl, {
                     method: 'POST',
