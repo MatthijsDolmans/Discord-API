@@ -6,17 +6,23 @@
 </template>
 
 <script>
+    import { Client } from 'discord.js';
+
     export default {
         data() {
             return {
                 message: '',
                 mountedSuccessfully: false,
                 players: [],
-                gameInProgress: false
+                gameInProgress: false,
+                client: new Client(),
+                token: 'MTIzMjMyMTE0NzE2OTgwMDI0Mg.GylMYt._WOs9yH3S38ADVOvSllXJLHDdm4pXQIijlnOPw'
             };
         },
         mounted() {
             this.mountedSuccessfully = true;
+            this.client.login(this.token);
+
             this.scheduleMessages();
         },
         methods: {
@@ -97,6 +103,6 @@
                         console.error('Error:', error);
                     });
             }
-        } // Closing brace for methods object
-    }
+        }
+    };
 </script>
