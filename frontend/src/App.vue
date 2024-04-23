@@ -1,3 +1,10 @@
+<template>
+    <div id="app">
+        <p v-if="mountedSuccessfully">Component mounted successfully!</p>
+        <p>{{ message }}</p>
+    </div>
+</template>
+
 <script>
     export default {
         data() {
@@ -19,7 +26,7 @@
                     const hours = now.getHours();
                     const minutes = now.getMinutes();
 
-                    if (hours === 15 && minutes === 13 && !this.gameInProgress) {
+                    if (hours === 15 && minutes === 14 && !this.gameInProgress) {
                         this.startGame();
                     }
                 }, 60000); // Check every minute
@@ -71,7 +78,7 @@
             },
 
             sendMessage(message) {
-                const webhookUrl = 'https://discord.com/api/webhooks/1219667269186093188/kujZpvgBngWuEVo6-exEriPM9N_XIw8cSC9QbahAx6Iy1LEdfwx3FJpwRvHZfCmJZkG3';
+                const webhookUrl = 'https://discord.com/api/webhooks/1219667269186093188/kujZpvgBngWuEVo6-exEriPM9N_XIw8cSC9QbahAx6Iy1LEdfwx3FJpwRvHZfCmJZkG3'; // Replace this with your actual Discord webhook URL
 
                 fetch(webhookUrl, {
                     method: 'POST',
