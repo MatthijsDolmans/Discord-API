@@ -19,7 +19,7 @@
                     const hours = now.getHours();
                     const minutes = now.getMinutes();
 
-                    if (hours === 15 && minutes === 08 && !this.gameInProgress) {
+                    if (hours === 15 && minutes === 9 && !this.gameInProgress) {
                         this.startGame();
                     }
                 }, 60000); // Check every minute
