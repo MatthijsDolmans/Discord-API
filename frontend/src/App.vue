@@ -1,16 +1,11 @@
-<template>
-    <div id="app">
-        <p v-if="mountedSuccessfully">Component mounted successfully!</p>
-        <p>{{ message }}</p>
-    </div>
-</template>
-
 <script>
     export default {
         data() {
             return {
                 message: '',
-                mountedSuccessfully: false
+                mountedSuccessfully: false,
+                players: [],
+                gameInProgress: false
             };
         },
         mounted() {
@@ -24,34 +19,59 @@
                     const hours = now.getHours();
                     const minutes = now.getMinutes();
 
-                    if (hours === 9 && minutes === 0) {
-                        this.sendMessage('goede morgen, vandaag ga ik Captain Hook je weer laten weten wanneer er activiteiten zijn!');
-                    } else if (hours === 12 && minutes === 30) {
-                        this.sendMessage('Captain Hook gaat even wat eten!');
-                    } else if (hours === 13 && minutes === 40) {
-                        this.sendMessage('Captain Hook is nu al moe!');
-                    } else if (hours === 13 && minutes === 50) {
-                        this.sendMessage('Captain Hook ziet dat het nog niet eens 2 uur is!');
-                    } else if (hours === 14 && minutes === 30) {
-                        this.sendMessage('Captain Hook het is pas half 3 pffffffff!');
-                    } else if (hours === 14 && minutes === 45) {
-                        this.sendMessage('Captain Hook gaat Amit kijken!');
-                    } else if (hours === 15 && minutes === 0) {
-                        this.sendMessage('Captain Hook nog half uur tot marktje!');
-                    } else if (hours === 15 && minutes === 30) {
-                        this.sendMessage('Captain Hook ziet tesla moonen! MARKT IS OPEN!!!!!');
-                    } else if (hours === 16 && minutes === 0) {
-                        this.sendMessage('Captain ziet dat het nog maar een uurtje is');
-                    } else if (hours === 16 && minutes === 55) {
-                        this.sendMessage('Nog 5 minuten!!!');
-                    } else if (hours === 17 && minutes === 0) {
-                        this.sendMessage('Captain Hook gaat weer slapen!');
+                    if (hours === 15 && minutes === 30 && !this.gameInProgress) {
+                        this.startGame();
                     }
                 }, 60000); // Check every minute
             },
 
+            startGame() {
+                this.gameInProgress = true;
+                this.message = 'A rock-paper-scissors game is starting at 15:30! Type !rps [rock/paper/scissors] to join.';
+            },
+
+            playRPS(user, choice) {
+                if (!this.gameInProgress) {
+                    this.sendMessage('There is no game currently in progress.');
+                    return;
+                }
+
+                if (this.players.length >= 2) {
+                    this.sendMessage('The game is already full.');
+                    return;
+                }
+
+                // Add the player and their choice
+                this.players.push({ user, choice });
+
+                if (this.players.length === 2) {
+                    // Determine the winner
+                    const p1Choice = this.players[0].choice.toLowerCase();
+                    const p2Choice = this.players[1].choice.toLowerCase();
+
+                    let winner = '';
+                    if (p1Choice === p2Choice) {
+                        winner = 'It\'s a tie!';
+                    } else if (
+                        (p1Choice === 'rock' && p2Choice === 'scissors') ||
+                        (p1Choice === 'paper' && p2Choice === 'rock') ||
+                        (p1Choice === 'scissors' && p2Choice === 'paper')
+                    ) {
+                        winner = this.players[0].user;
+                    } else {
+                        winner = this.players[1].user;
+                    }
+
+                    // Announce the winner
+                    this.sendMessage(`The winner is ${winner}!`);
+                    // Reset the game state
+                    this.players = [];
+                    this.gameInProgress = false;
+                }
+            },
+
             sendMessage(message) {
-                const webhookUrl = 'https://discord.com/api/webhooks/1219667269186093188/kujZpvgBngWuEVo6-exEriPM9N_XIw8cSC9QbahAx6Iy1LEdfwx3FJpwRvHZfCmJZkG3'; // Replace with your Discord webhook URL
+                const webhookUrl = 'YOUR_DISCORD_WEBHOOK_URL';
 
                 fetch(webhookUrl, {
                     method: 'POST',
