@@ -41,7 +41,7 @@
                     const hours = now.getHours();
                     const minutes = now.getMinutes();
 
-                    if (hours === 15 && minutes === 47 && !this.gameInProgress) {
+                    if (hours === 15 && minutes === 49 && !this.gameInProgress) {
                         this.startGame();
                     }
                 }, 60000); // Check every minute
@@ -49,7 +49,7 @@
 
             startGame() {
                 this.gameInProgress = true;
-                const message = 'A rock-paper-scissors game is starting at 15:47! Type !rps [rock/paper/scissors] to join.';
+                const message = 'A rock-paper-scissors game is starting at 15:49! Type !rps [rock/paper/scissors] to join.';
                 this.sendMessage(message);
             },
 
